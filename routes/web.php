@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/backend/dashboard', [App\Http\Controllers\backend\DashboardController::class, 'index'])->name('dashboard');
+// Route Administrator
+Route::prefix('backend')->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/user', UserController::class);
+});
 
 Auth::routes();
 
