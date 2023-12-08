@@ -16,28 +16,30 @@
                 DataTable Users
             </div>
             <div class="card-body">
-                <table class="table table-responsive" id="datatablesSimple">
+                <table class="table table-striped" id="datatablesSimple">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Whatsapp</th>
-                            <th>Address</th>
                             <th>Role</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Donna Snider</td>
-                            <td>Customer Support</td>
-                            <td>New York</td>
-                            <td>27</td>
-                            <td>2011/01/25</td>
-                            <td>$112,000</td>
-                            <td>Button</td>
-                        </tr>
+                        @foreach ($user as $e => $item)
+                            <tr>
+                                <td>{{ $e + 1 }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->whatsapp }}</td>
+                                <td>{{ $item->roles }}</td>
+                                <td>{{ $item->status }}</td>
+                                <td><a href="" class="btn btn-sm">Edit</a></td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
