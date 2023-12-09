@@ -46,13 +46,13 @@
 
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ asset('avatar2.png') }}" class="user-image" alt="User Image">
+                    <img src="{{ asset('img/user.png') }}" class="user-image" alt="User Image">
                     <span class="hidden-xs">User</span>
                 </a>
                 <ul class="dropdown-menu">
                     <!-- User image -->
                     <li class="user-header">
-                        <img src="{{ asset('avatar2.png') }}" class="img-circle" alt="User Image">
+                        <img src="{{ asset('img/user.png') }}" class="img-circle" alt="User Image">
 
                         <p>
                             {{-- {{ \Auth::user()->name }} --}}
