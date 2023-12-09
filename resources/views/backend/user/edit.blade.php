@@ -8,19 +8,18 @@
                 <div class="box-header">
                     <p>
                         <button class="btn btn-sm btn-flat btn-warning btn-refresh"><i class="fa fa-refresh"></i>
-                            Refresh
-                        </button>
+                            Refresh</button>
                         <a href="/backend/user" class="btn btn-flat btn-primary btn-sm">Kembali</a>
-
                     </p>
                 </div>
                 <div class="box-body">
-                    <form action="/backend/user" method="POST">
+                    <form action="{{ url('backend/user/' . $user->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nama</label>
-                                <input type="text" name="name" class="form-control" value="{{ old('name') }}"
+                                <input type="text" name="name" class="form-control" value="{{ $user->name }}"
                                     id="exampleInputEmail1" placeholder="Masukan nama">
                                 @error('name')
                                     <span class="text-danger" role="alert">
@@ -30,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
-                                <input type="email" name="email" value="{{ old('email') }}" class="form-control"
+                                <input type="email" name="email" value="{{ $user->email }}" class="form-control"
                                     id="exampleInputEmail1" placeholder="Masukan email">
                                 @error('email')
                                     <span class="text-danger" role="alert">
@@ -40,9 +39,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Roles</label>
-                                <select name="roles" class="form-control" id="">
-                                    <option value="admin">Admin</option>
-                                    <option value="member">Member</option>
+                                <select name="roles" class="form-control" id="exampleInputEmail1">
+                                    <option value="admin" {{ $user->roles == 'admin' ? 'selected' : '' }}>Admin</option>
+                                    <option value="member"{{ $user->roles == 'member' ? 'selected' : '' }}>Member</option>
                                 </select>
                                 @error('roles')
                                     <span class="text-danger" role="alert">
@@ -54,8 +53,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">No. Whatsapp</label>
-                                <input type="numeric" name="whatsapp" value="{{ old('whatsapp') }}" class="form-control"
-                                    id="exampleInputEmail1" placeholder="ex: 081213141516">
+                                <input type="numeric" name="whatsapp" value="{{ '0' . substr($user->whatsapp, 2) }}"
+                                    class="form-control" id="exampleInputEmail1" placeholder="ex: 081213141516">
                                 @error('whatsapp')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -65,7 +64,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Password</label>
                                 <input type="password" name="password" class="form-control" id="exampleInputEmail1"
-                                    placeholder="Masukan password">
+                                    placeholder="Ganti password">
                                 @error('password')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -74,7 +73,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Alamat</label>
-                                <textarea name="address" id="" class="form-control">{{ old('address') }}</textarea>
+                                <textarea name="address" id="" class="form-control">{{ $user->address }}</textarea>
                                 @error('address')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>

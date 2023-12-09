@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h4>Dashboard</h4>
+            <h3>{{ $title }}</h3>
             <div class="box box-warning">
                 <div class="box-header">
                     <p>
@@ -35,8 +35,8 @@
                                     <td>{{ $item->roles }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td>
-                                        <a href="{{ url('user/edit/' . $item->id) }}" class="btn btn-xs btn-warning"><i
-                                                class="fa fa-pencil"></i></a>
+                                        <a href="{{ url('backend/user/' . $item->id . '/edit/') }}"
+                                            class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i></a>
                                         <a href="{{ url('pengguna/delete/' . $item->id) }}"
                                             class="btn btn-xs btn-danger btn-hapus"><i class="fa fa-trash"></i></a>
                                     </td>
