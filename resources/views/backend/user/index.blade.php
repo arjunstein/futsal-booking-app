@@ -9,6 +9,7 @@
                     <p>
                         <button class="btn btn-sm btn-flat btn-warning btn-refresh"><i class="fa fa-refresh"></i>
                             Refresh</button>
+                        <a href="/backend/user/create" class="btn btn-flat btn-sm btn-primary">Buat Member</a>
                     </p>
                 </div>
                 <div class="box-body">

@@ -16,6 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $data = [
+            'title' => 'List User',
             'user' => User::orderBy('id', 'asc')->get(),
         ];
 
@@ -29,7 +30,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => 'Buat member baru',
+        ];
+        return view('backend.user.create', $data);
     }
 
     /**
@@ -40,7 +44,27 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:30|min:3|alpha:ascii',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:8|max:20',
+            'roles' => 'required|in:admin,member',
+            'whatsapp' => 'required|alpha_num|max:13|min:10',
+            'address' => 'nullable|string|max:100|min:10',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'roles' => $request->roles,
+            'whatsapp' => '62' . substr($request->whatsapp, 1),
+            'address' => $request->address,
+        ]);
+
+        return redirect()
+            ->route('user.index')
+            ->with('success', 'Member berhasil ditambahkan');
     }
 
     /**

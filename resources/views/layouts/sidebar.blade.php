@@ -26,9 +26,10 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li class="{{ Request::is('backend/user*') ? 'active' : '' }}"><a href="/backend/user"><i
+                <li class="{{ Request::is('backend/user') ? 'active' : '' }}"><a href="/backend/user"><i
                             class="fa fa-circle-o"></i> List Member</a></li>
-                <li><a href="/backend/user/create"><i class="fa fa-circle-o"></i> Buat Member Baru</a></li>
+                <li class="{{ Request::is('backend/user/create') ? 'active' : '' }}"><a href="/backend/user/create"><i
+                            class="fa fa-circle-o"></i> Buat Member Baru</a></li>
             </ul>
         </li>
     </ul>
