@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -45,7 +46,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:30|min:3|alpha:ascii',
+            'name' => 'required|string|max:30|min:3',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8|max:20',
             'roles' => 'required|in:admin,member',
@@ -64,7 +65,7 @@ class UserController extends Controller
 
         return redirect()
             ->route('user.index')
-            ->with('success', 'Member berhasil ditambahkan');
+            ->with('info', 'Member berhasil dibuat');
     }
 
     /**
@@ -137,6 +138,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->back()->with('success','Member berhasil dihapus');
+        return redirect()
+            ->back()
+            ->with('success', 'Member berhasil dihapus');
     }
 }
