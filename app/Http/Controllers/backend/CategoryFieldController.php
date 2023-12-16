@@ -53,7 +53,9 @@ class CategoryFieldController extends Controller
         $data->category_field_name = $request->category_field_name;
         $data->save();
 
-        return redirect()->route('category.index')->with('success', 'Kategori lapangan berhasil dibuat');
+        return redirect()
+            ->route('category.index')
+            ->with('success', 'Kategori lapangan berhasil dibuat');
     }
 
     /**
@@ -75,7 +77,12 @@ class CategoryFieldController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'title' => 'Edit Kategori Lapangan',
+            'category' => CategoryField::findOrFail($id),
+        ];
+
+        return view('backend.category.edit', $data);
     }
 
     /**
@@ -87,7 +94,16 @@ class CategoryFieldController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'category_field_name' => 'required|string|max:30|min:3',
+        ]);
+
+        $data = CategoryField::findOrFail($id);
+        $data->category_field_name = $request->category_field_name;
+        $data->update();
+        return redirect()
+            ->route('category.index')
+            ->with('success', 'Kategori lapangan berhasil diupdate');
     }
 
     /**
@@ -98,6 +114,9 @@ class CategoryFieldController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = CategoryField::findOrFail($id);
+        $data->delete();
+
+        return redirect()->back()->with('success','Data berhasil dihapus');
     }
 }

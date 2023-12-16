@@ -88,8 +88,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $data = [
-            'title' => 'Edit member',
-            'user' => User::find($id),
+            'title' => "Edit member",
+            'user' => User::findOrFail($id),
         ];
 
         return view('backend.user.edit', $data);
