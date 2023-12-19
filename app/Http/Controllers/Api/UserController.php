@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
@@ -17,17 +16,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = [
+        // API
+        $users = User::orderBy('id', 'asc')->get();
+
+        return response()->json([
             'title' => 'List Member',
-            'user' => User::orderBy('id', 'asc')->get(),
-        ];
-
-        return view('backend.user.index', $data);
-
-        // $response = Http::get('http://localhost:8000/api/users'); // Ganti URL dengan endpoint API yang sesuai
-        // $data = $response->json();
-        //
-        // return view('backend.user.index', ['user' => $data['users'], 'title' => $data['title']]);
+            'users' => $users,
+        ]);
     }
 
     /**
