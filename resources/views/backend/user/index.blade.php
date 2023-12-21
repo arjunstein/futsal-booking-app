@@ -36,7 +36,7 @@
                                     <td>{{ $item->status }}</td>
                                     <td style="display: flex;">
                                         <a href="{{ url('backend/user/' . $item->id . '/edit/') }}"
-                                            class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i></a>
+                                            class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a>
                                         <form action="{{ url('backend/user/' . $item->id) }}" method="POST" onclick="return confirm('Yakin ingin hapus user ini?')"
                                             class="delete-form">
                                             @csrf

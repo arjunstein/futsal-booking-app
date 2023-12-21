@@ -28,7 +28,7 @@
                                     <td>{{ $item->category_field_name }}</td>
                                     <td style="display: flex;">
                                         <a href="{{ url('backend/category/' . $item->id . '/edit/') }}"
-                                            class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i></a>
+                                            class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a>
                                         <form action="{{ url('backend/category/' . $item->id) }}" method="POST"
                                             onclick="return confirm('Yakin ingin hapus kategori lapangan ini?')"
                                             class="delete-form">
