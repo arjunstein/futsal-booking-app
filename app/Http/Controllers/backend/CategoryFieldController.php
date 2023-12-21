@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CategoryField;
+use Exception;
 
 class CategoryFieldController extends Controller
 {
@@ -114,9 +115,17 @@ class CategoryFieldController extends Controller
      */
     public function destroy($id)
     {
-        $data = CategoryField::findOrFail($id);
-        $data->delete();
+        try {
+            $data = CategoryField::findOrFail($id);
+            $data->delete();
 
-        return redirect()->back()->with('success','Data berhasil dihapus');
+            return redirect()
+                ->back()
+                ->with('success', 'Data berhasil dihapus');
+
+        } catch (\Throwable $th) {
+            \Session::flash('gagal','Data tidak dapat dihapus, karena berelasi dengan data lapangan');
+            return redirect()->back();
+        }
     }
 }

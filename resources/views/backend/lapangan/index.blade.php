@@ -18,6 +18,7 @@
                             <tr>
                                 <th width="5%">No</th>
                                 <th>Nama Lapangan</th>
+                                <th>Kategori</th>
                                 <th>Harga Sewa Siang</th>
                                 <th>Harga Sewa Malam</th>
                                 <th>Status</th>
@@ -29,13 +30,14 @@
                                 <tr>
                                     <td>{{ $e + 1 }}</td>
                                     <td>{{ $item->nama_lapangan }}</td>
-                                    <td>{{ $item->harga_sewa_siang }}</td>
-                                    <td>{{ $item->harga_sewa_malam }}</td>
+                                    <td>{{ $item->category->category_field_name }}</td>
+                                    <td>Rp. {{ number_format($item->harga_sewa_siang) }} /Jam</td>
+                                    <td>Rp. {{ number_format($item->harga_sewa_malam) }} /Jam</td>
                                     <td>{{ $item->status }}</td>
                                     <td style="display: flex;">
                                         <a href="{{ url('backend/lapangan/' . $item->id . '/edit/') }}"
                                             class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i></a>
-                                        <form action="{{ url('backend/lapangan/' . $item->id) }}" method="POST" onclick="return confirm('Yakin ingin hapus user ini?')"
+                                        <form action="{{ url('backend/lapangan/' . $item->id) }}" method="POST" onclick="return confirm('Yakin ingin hapus lapangan ini?')"
                                             class="delete-form">
                                             @csrf
                                             @method('DELETE')
