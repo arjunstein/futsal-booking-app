@@ -41,8 +41,8 @@
                                             class="delete-form">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-xs btn-danger btn-delete"
-                                                onclick="return confirm('Yakin ingin hapus user ini?')">
+                                            <button class="btn btn-xs btn-danger btn-hapus"
+                                                >
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </form>

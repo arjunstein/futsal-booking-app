@@ -44,7 +44,7 @@
                         <div class="modal-content bg-gradient-danger">
 
                             <div class="modal-header">
-                                <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
+                                <h4 class="modal-title" id="modal-title-notification">Konfirmasi</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -54,13 +54,13 @@
 
                                 <div class="py-3 text-center">
                                     <i class="ni ni-bell-55 ni-3x"></i>
-                                    <h4 class="heading mt-4">Apakah kamu yakin ingin menghapus data ini?</h4>
+                                    <h4 class="heading mt-4">Yakin ingin menghapus data ini?</h4>
                                 </div>
 
                             </div>
 
                             <div class="modal-footer">
-                                <form action="" method="post">
+                                <form action="{{ url('backend/user/' . $item->id) }}" method="post">
                                     {{ csrf_field() }}
                                     {{ method_field('delete') }}
                                     <p>
