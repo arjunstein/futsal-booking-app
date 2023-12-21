@@ -35,7 +35,7 @@
 
         <li class="treeview {{ Request::is('backend/category*') ? 'active' : '' }} ">
             <a href="#">
-                <i class="fa fa-users"></i> <span>Data Kategori</span>
+                <i class="fa fa-sticky-note"></i> <span>Data Kategori</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -43,8 +43,23 @@
             <ul class="treeview-menu">
                 <li class="{{ Request::is('backend/category') ? 'active' : '' }}"><a href="/backend/category"><i
                             class="fa fa-circle-o"></i> List Kategori Lapangan</a></li>
-                <li class="{{ Request::is('backend/category/create') ? 'active' : '' }}"><a href="/backend/category/create"><i
-                            class="fa fa-circle-o"></i> Buat Kategori Baru</a></li>
+                <li class="{{ Request::is('backend/category/create') ? 'active' : '' }}"><a
+                        href="/backend/category/create"><i class="fa fa-circle-o"></i> Buat Kategori Baru</a></li>
+            </ul>
+        </li>
+
+        <li class="treeview {{ Request::is('backend/lapangan*') ? 'active' : '' }} ">
+            <a href="#">
+                <i class="fa fa-building"></i> <span>Data Lapangan</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="{{ Request::is('backend/lapangan') ? 'active' : '' }}"><a href="/backend/lapangan"><i
+                            class="fa fa-circle-o"></i> List Lapangan</a></li>
+                <li class="{{ Request::is('backend/lapangan/create') ? 'active' : '' }}"><a
+                        href="/backend/lapangan/create"><i class="fa fa-circle-o"></i> Buat Lapangan Baru</a></li>
             </ul>
         </li>
     </ul>
