@@ -37,12 +37,11 @@
                                     <td style="display: flex;">
                                         <a href="{{ url('backend/user/' . $item->id . '/edit/') }}"
                                             class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i></a>
-                                        <form action="{{ url('backend/user/' . $item->id) }}" method="POST"
+                                        <form action="{{ url('backend/user/' . $item->id) }}" method="POST" onclick="return confirm('Yakin ingin hapus user ini?')"
                                             class="delete-form">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-xs btn-danger btn-delete"
-                                                onclick="return confirm('Yakin ingin hapus user ini?')">
+                                            <button class="btn btn-xs btn-danger">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </form>
