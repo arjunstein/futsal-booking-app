@@ -16,6 +16,19 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'whatsapp' => 6287777777777,
+            'address' => fake()->address(),
+            'email_verified_at' => now(),
+            'password' => bcrypt('12345'),
+            'roles' => 'admin',
+            'remember_token' => Str::random(10),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
         for ($i = 0; $i < 5; $i++) {
             $whatsappNumber = '628' . str_pad(rand(0, 9999999999), 10, '0', STR_PAD_LEFT);
             DB::table('users')->insert([
