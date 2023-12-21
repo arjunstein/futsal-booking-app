@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="modal-footer">
-                                <form action="{{ url('backend/user/' . $item->id) }}" method="post">
+                                <form action="" method="post">
                                     {{ csrf_field() }}
                                     {{ method_field('delete') }}
                                     <p>
