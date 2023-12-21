@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Lapangan;
+use App\Models\CategoryField;
 
 class LapanganController extends Controller
 {
@@ -17,10 +18,10 @@ class LapanganController extends Controller
     {
         $data = [
             'title' => 'List Lapangan',
-            'lapangan' => Lapangan::orderBy('id','asc')->get(),
+            'lapangan' => Lapangan::orderBy('id', 'asc')->get(),
         ];
 
-        return view('backend.lapangan.index',$data);
+        return view('backend.lapangan.index', $data);
     }
 
     /**
@@ -32,9 +33,10 @@ class LapanganController extends Controller
     {
         $data = [
             'title' => 'Tambah Lapangan',
+            'category' => CategoryField::orderBy('id','asc')->get(),
         ];
 
-        return view('backend.lapangan.create',$data);
+        return view('backend.lapangan.create', $data);
     }
 
     /**
@@ -45,7 +47,25 @@ class LapanganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_lapangan' => 'required|min:3|max:100',
+            'category_id' => 'required',
+            'status' => 'required',
+            'harga_sewa_siang' => 'required|numeric',
+            'harga_sewa_malam' => 'required|numeric',
+        ]);
+
+        $data = new Lapangan();
+        $data->nama_lapangan = $request->nama_lapangan;
+        $data->category_id = $request->category_id;
+        $data->status = $request->status;
+        $data->harga_sewa_siang = $request->harga_sewa_siang;
+        $data->harga_sewa_malam = $request->harga_sewa_malam;
+        $data->save();
+
+        return redirect()
+            ->route('lapangan.index')
+            ->with('success', 'Lapangan berhasil dibuat');
     }
 
     /**
@@ -67,7 +87,10 @@ class LapanganController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['title'] = 'Edit Data Lapangan';
+        $data['category'] = CategoryField::orderBy('id', 'asc')->get();
+        $data['lapangan'] = Lapangan::findOrFail($id);
+        return view('backend.lapangan.edit', $data);
     }
 
     /**
@@ -79,7 +102,24 @@ class LapanganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_lapangan' => 'required|min:3|max:100',
+            'category_id' => 'required',
+            'status' => 'required',
+            'harga_sewa_siang' => 'required|numeric',
+            'harga_sewa_malam' => 'required|numeric',
+        ]);
+
+        $data = Lapangan::findOrFail($id);
+        $data->nama_lapangan = $request->nama_lapangan;
+        $data->status = $request->status;
+        $data->harga_sewa_siang = $request->harga_sewa_siang;
+        $data->harga_sewa_malam = $request->harga_sewa_malam;
+        $data->update();
+
+        return redirect()
+            ->route('lapangan.index')
+            ->with('success', 'Lapangan berhasil diperbarui');
     }
 
     /**
@@ -90,6 +130,9 @@ class LapanganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Lapangan::findOrFail($id);
+        $data->delete();
+
+        return redirect()->back()->with('success','Data berhasil dihapus');
     }
 }

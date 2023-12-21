@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('lapangans', function (Blueprint $table) {
             $table->id();
             $table->string("nama_lapangan");
+            $table->bigInteger('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('category_fields')->onDelete('restrict');
             $table->string("status")->default('Tersedia');
             $table->integer("harga_sewa_siang");
             $table->integer("harga_sewa_malam");

@@ -15,13 +15,14 @@
                     </p>
                 </div>
                 <div class="box-body">
-                    <form action="/backend/lapangan" method="POST">
+                    <form action="{{ url('backend/lapangan/' . $lapangan->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Nama Lapangan</label>
                                 <input type="text" name="nama_lapangan" class="form-control"
-                                    value="{{ old('nama_lapangan') }}" id="exampleInputEmail1"
+                                    value="{{ $lapangan->nama_lapangan }}" id="exampleInputEmail1"
                                     placeholder="Masukan lapangan">
                                 @error('nama_lapangan')
                                     <span class="text-danger" role="alert">
@@ -32,9 +33,9 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Kategori Lapangan</label>
                                 <select name="category_id" id="" class="form-control">
-                                    <option value="">--Pilih Kategori--</option>
                                     @foreach ($category as $item)
-                                        <option value="{{ $item->id }}">{{ $item->category_field_name }}</option>
+                                        <option value="{{ $item->id }}"
+                                            {{ $lapangan->category_id == $item->id ? 'selected' : '' }}>{{ $item->category_field_name }}</option>
                                     @endforeach
                                 </select>
                                 @error('category_id')
@@ -43,25 +44,31 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Status</label>
                                 <select name="status" id="" class="form-control">
-                                    <option value="Tersedia">Tersedia</option>
-                                    <option value="Sudah Dibooking">Sudah dibooking</option>
-                                    <option value="Sedang Dipakai">Sedang Dipakai</option>
+                                    <option value="Tersedia" {{ $lapangan->status == 'Tersedia' ? 'selected' : '' }}>
+                                        Tersedia</option>
+                                    <option value="Sudah Dibooking"
+                                        {{ $lapangan->status == 'Sudah Dibooking' ? 'selected' : '' }}>Sudah Dibooking
+                                    </option>
+                                    <option value="Sedang Dipakai"
+                                        {{ $lapangan->status == 'Sedang Dipakai' ? 'selected' : '' }}>Sedang Dipakai
+                                    </option>
                                 </select>
-                                @error('status')
+                                @error('nama_lapangan')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Sewa Siang</label>
-                                <input type="number" name="harga_sewa_siang" class="form-control"
-                                    value="{{ old('harga_sewa_siang') }}" id="harga_sewa" placeholder="Masukan harga">
+                                <input type="text" name="harga_sewa_siang" class="form-control"
+                                    value="{{ $lapangan->harga_sewa_siang }}" id="exampleInputEmail1"
+                                    placeholder="Masukan harga">
                                 @error('harga_sewa_siang')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -70,8 +77,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Sewa Malam</label>
-                                <input type="number" name="harga_sewa_malam" class="form-control"
-                                    value="{{ old('harga_sewa_siang') }}" id="harga_sewa" placeholder="Masukan harga">
+                                <input type="text" name="harga_sewa_malam" class="form-control"
+                                    value="{{ $lapangan->harga_sewa_malam }}" id="exampleInputEmail1"
+                                    placeholder="Masukan harga">
                                 @error('harga_sewa_malam')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>

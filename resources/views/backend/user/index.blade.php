@@ -16,7 +16,7 @@
                     <table class="table table-striped myTable">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th width="6%">No</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Whatsapp</th>
