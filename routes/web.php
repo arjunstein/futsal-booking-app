@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CategoryFieldController;
+use App\Http\Controllers\Backend\LapanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::prefix('backend')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/user', UserController::class);
     Route::resource('/category', CategoryFieldController::class);
+    Route::resource('/lapangan', LapanganController::class);
 
 });
 
