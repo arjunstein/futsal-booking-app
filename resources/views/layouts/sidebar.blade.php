@@ -62,5 +62,6 @@
                         href="/backend/lapangan/create"><i class="fa fa-circle-o"></i> Buat Lapangan Baru</a></li>
             </ul>
         </li>
+        <li class="header">MEMBER</li>
     </ul>
 </section>
