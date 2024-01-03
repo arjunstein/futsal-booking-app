@@ -23,11 +23,12 @@ Route::get('/', function () {
 
 // Route Administrator
 Route::prefix('backend')->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('/user', UserController::class);
-    Route::resource('/category', CategoryFieldController::class);
-    Route::resource('/lapangan', LapanganController::class);
-
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('/user', UserController::class);
+        Route::resource('/category', CategoryFieldController::class);
+        Route::resource('/lapangan', LapanganController::class);
+    });
 });
 
 Auth::routes();
