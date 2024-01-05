@@ -15,7 +15,7 @@
                     </p>
                 </div>
                 <div class="box-body">
-                    <form action="{{ url('backend/lapangan/' . $lapangan->id) }}" method="POST">
+                    <form action="{{ url('backend/lapangan/' . $lapangan->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="col-md-6">
@@ -31,11 +31,21 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label>Gambar Lapangan</label>
+                                <input type="file" name="gambar" class="form-control" id="">
+                                @error('gambar')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">Kategori Lapangan</label>
                                 <select name="category_id" id="" class="form-control">
                                     @foreach ($category as $item)
                                         <option value="{{ $item->id }}"
-                                            {{ $lapangan->category_id == $item->id ? 'selected' : '' }}>{{ $item->category_field_name }}</option>
+                                            {{ $lapangan->category_id == $item->id ? 'selected' : '' }}>
+                                            {{ $item->category_field_name }}</option>
                                     @endforeach
                                 </select>
                                 @error('category_id')
@@ -44,8 +54,6 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Status</label>
                                 <select name="status" id="" class="form-control">
@@ -64,9 +72,11 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Sewa Siang</label>
-                                <input type="text" name="harga_sewa_siang" class="form-control"
+                                <input type="number" name="harga_sewa_siang" class="form-control"
                                     value="{{ $lapangan->harga_sewa_siang }}" id="exampleInputEmail1"
                                     placeholder="Masukan harga">
                                 @error('harga_sewa_siang')
@@ -77,10 +87,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Sewa Malam</label>
-                                <input type="text" name="harga_sewa_malam" class="form-control"
+                                <input type="number" name="harga_sewa_malam" class="form-control"
                                     value="{{ $lapangan->harga_sewa_malam }}" id="exampleInputEmail1"
                                     placeholder="Masukan harga">
                                 @error('harga_sewa_malam')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <textarea name="deskripsi" id="" class="form-control" cols="30" rows="6">{{ $lapangan->deskripsi }}
+                                </textarea>
+                                @error('deskripsi')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

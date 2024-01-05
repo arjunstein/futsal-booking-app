@@ -15,7 +15,7 @@
                     </p>
                 </div>
                 <div class="box-body">
-                    <form action="/backend/lapangan" method="POST">
+                    <form action="/backend/lapangan" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-6">
                             <div class="form-group">
@@ -24,6 +24,16 @@
                                     value="{{ old('nama_lapangan') }}" id="exampleInputEmail1"
                                     placeholder="Masukan lapangan">
                                 @error('nama_lapangan')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Gambar Lapangan</label>
+                                <input type="file" name="gambar" class="form-control"
+                                    id="exampleInputEmail1" placeholder="">
+                                @error('gambar')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -61,7 +71,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Sewa Siang</label>
                                 <input type="number" name="harga_sewa_siang" class="form-control"
-                                    value="{{ old('harga_sewa_siang') }}" id="harga_sewa" placeholder="Masukan harga">
+                                    value="{{ old('harga_sewa_siang') }}" id="" placeholder="Masukan harga">
                                 @error('harga_sewa_siang')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -71,8 +81,16 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Sewa Malam</label>
                                 <input type="number" name="harga_sewa_malam" class="form-control"
-                                    value="{{ old('harga_sewa_siang') }}" id="harga_sewa" placeholder="Masukan harga">
+                                    value="{{ old('harga_sewa_siang') }}" id="" placeholder="Masukan harga">
                                 @error('harga_sewa_malam')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <textarea name="deskripsi" id="" class="form-control" cols="30" rows="6">{{ old('deskripsi') }}</textarea>
+                                @error('deskripsi')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -4,8 +4,8 @@
             <img src="{{ asset('img/user.png') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-            <p>User</p>
-            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            <p>{{ \Auth::user()->name }}</p>
+            <a><i class="fa fa-circle text-success"></i> Online</a>
         </div>
     </div>
     <!-- Sidebar user panel -->

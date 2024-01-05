@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\LapanganRequest;
 use App\Models\Lapangan;
 use App\Models\CategoryField;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class LapanganController extends Controller
 {
@@ -33,7 +36,7 @@ class LapanganController extends Controller
     {
         $data = [
             'title' => 'Tambah Lapangan',
-            'category' => CategoryField::orderBy('id','asc')->get(),
+            'category' => CategoryField::orderBy('id', 'asc')->get(),
         ];
 
         return view('backend.lapangan.create', $data);
@@ -45,22 +48,22 @@ class LapanganController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LapanganRequest $request)
     {
-        $request->validate([
-            'nama_lapangan' => 'required|min:3|max:100',
-            'category_id' => 'required',
-            'status' => 'required',
-            'harga_sewa_siang' => 'required|numeric',
-            'harga_sewa_malam' => 'required|numeric',
-        ]);
+        $data = $request->all();
+
+        // upload gambar
+        $image = $request->file('gambar');
+        $image->storeAs('public/lapangans', $image->hashName());
 
         $data = new Lapangan();
         $data->nama_lapangan = $request->nama_lapangan;
+        $data->gambar = $image->hashName();
         $data->category_id = $request->category_id;
         $data->status = $request->status;
         $data->harga_sewa_siang = $request->harga_sewa_siang;
         $data->harga_sewa_malam = $request->harga_sewa_malam;
+        $data->deskripsi = $request->deskripsi;
         $data->save();
 
         return redirect()
@@ -104,18 +107,47 @@ class LapanganController extends Controller
     {
         $request->validate([
             'nama_lapangan' => 'required|min:3|max:100',
+            'gambar' => 'image|mimes:png,jpg,jpeg|max:400',
             'category_id' => 'required',
             'status' => 'required',
             'harga_sewa_siang' => 'required|numeric',
             'harga_sewa_malam' => 'required|numeric',
+            'deskripsi' => 'required|max:200',
         ]);
 
-        $data = Lapangan::findOrFail($id);
-        $data->nama_lapangan = $request->nama_lapangan;
-        $data->status = $request->status;
-        $data->harga_sewa_siang = $request->harga_sewa_siang;
-        $data->harga_sewa_malam = $request->harga_sewa_malam;
-        $data->update();
+        if ($request->hasFile('gambar')) {
+            # upload gambar baru
+            $image = $request->file('gambar');
+            $image->storeAs('public/lapangans/', $image->hashName());
+
+            # delete gambar lama
+            $data = Lapangan::findOrFail($id);
+            $path = storage_path('app/public/lapangans/' . $data->gambar);
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+
+            # update lapangan dg gambar baru
+            $data = Lapangan::findOrFail($id);
+            $data->nama_lapangan = $request->nama_lapangan;
+            $data->gambar = $image->hashName();
+            $data->category_id = $request->category_id;
+            $data->status = $request->status;
+            $data->harga_sewa_siang = $request->harga_sewa_siang;
+            $data->harga_sewa_malam = $request->harga_sewa_malam;
+            $data->deskripsi = $request->deskripsi;
+            $data->update();
+        } else {
+            # update lapangan tanpa gambar
+            $data = Lapangan::findOrFail($id);
+            $data->nama_lapangan = $request->nama_lapangan;
+            $data->category_id = $request->category_id;
+            $data->status = $request->status;
+            $data->harga_sewa_siang = $request->harga_sewa_siang;
+            $data->harga_sewa_malam = $request->harga_sewa_malam;
+            $data->deskripsi = $request->deskripsi;
+            $data->update();
+        }
 
         return redirect()
             ->route('lapangan.index')
@@ -133,6 +165,8 @@ class LapanganController extends Controller
         $data = Lapangan::findOrFail($id);
         $data->delete();
 
-        return redirect()->back()->with('success','Data berhasil dihapus');
+        return redirect()
+            ->back()
+            ->with('success', 'Data berhasil dihapus');
     }
 }

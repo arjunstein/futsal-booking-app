@@ -17,6 +17,7 @@
                         <thead>
                             <tr>
                                 <th width="5%">No</th>
+                                <th>Gambar</th>
                                 <th>Nama Lapangan</th>
                                 <th>Kategori</th>
                                 <th>Harga Sewa Siang</th>
@@ -29,6 +30,7 @@
                             @foreach ($lapangan as $e => $item)
                                 <tr>
                                     <td>{{ $e + 1 }}</td>
+                                    <td><img src="{{ asset('storage/lapangans/'.$item->gambar) }}" alt="" height="80px"></td>
                                     <td>{{ $item->nama_lapangan }}</td>
                                     <td>{{ $item->category->category_field_name }}</td>
                                     <td>Rp. {{ number_format($item->harga_sewa_siang) }} /Jam</td>
