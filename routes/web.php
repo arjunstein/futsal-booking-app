@@ -23,11 +23,20 @@ Route::get('/', function () {
 
 // Route Administrator
 Route::prefix('backend')->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('/user', UserController::class);
-    Route::resource('/category', CategoryFieldController::class);
-    Route::resource('/lapangan', LapanganController::class);
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('/user', UserController::class);
+        Route::resource('/category', CategoryFieldController::class);
+        Route::resource('/lapangan', LapanganController::class);
+    });
+});
 
+Route::post('logout', function () {
+    \Auth::logout();
+    return redirect('login');
+});
+Route::get('logout', function () {
+    return redirect('/backend/dashboard');
 });
 
 Auth::routes();
