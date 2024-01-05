@@ -65,8 +65,13 @@
                             <a href="#" class="btn btn-default btn-flat menu-sidebar">Profile</a>
                         </div>
                         <div class="pull-right">
-                            <a href="{{ url('keluar') }}" onclick="return confirm('Yakin ingin keluar?')"
+                            <a
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit()"
                                 class="btn btn-default btn-flat menu-sidebar">Sign out</a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                 </ul>

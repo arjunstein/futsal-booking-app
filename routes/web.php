@@ -31,6 +31,14 @@ Route::prefix('backend')->group(function () {
     });
 });
 
+Route::post('logout', function () {
+    \Auth::logout();
+    return redirect('login');
+});
+Route::get('logout', function () {
+    return redirect('/backend/dashboard');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
