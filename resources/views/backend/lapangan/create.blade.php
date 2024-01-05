@@ -30,6 +30,16 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputEmail1">Gambar Lapangan</label>
+                                <input type="file" name="gambar" class="form-control" value="{{ old('gambar') }}"
+                                    id="exampleInputEmail1" placeholder="">
+                                @error('gambar')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">Kategori Lapangan</label>
                                 <select name="category_id" id="" class="form-control">
                                     <option value="">--Pilih Kategori--</option>
@@ -61,7 +71,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Sewa Siang</label>
                                 <input type="number" name="harga_sewa_siang" class="form-control"
-                                    value="{{ old('harga_sewa_siang') }}" id="harga_sewa" placeholder="Masukan harga">
+                                    value="{{ old('harga_sewa_siang') }}" id="" placeholder="Masukan harga">
                                 @error('harga_sewa_siang')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -71,8 +81,16 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Harga Sewa Malam</label>
                                 <input type="number" name="harga_sewa_malam" class="form-control"
-                                    value="{{ old('harga_sewa_siang') }}" id="harga_sewa" placeholder="Masukan harga">
+                                    value="{{ old('harga_sewa_siang') }}" id="" placeholder="Masukan harga">
                                 @error('harga_sewa_malam')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <textarea name="deskripsi" id="" class="form-control" cols="30" rows="6"></textarea>
+                                @error('deskripsi')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
