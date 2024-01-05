@@ -15,7 +15,7 @@
                     </p>
                 </div>
                 <div class="box-body">
-                    <form action="/backend/lapangan" method="POST">
+                    <form action="/backend/lapangan" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-6">
                             <div class="form-group">
@@ -31,7 +31,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Gambar Lapangan</label>
-                                <input type="file" name="gambar" class="form-control" value="{{ old('gambar') }}"
+                                <input type="file" name="gambar" class="form-control"
                                     id="exampleInputEmail1" placeholder="">
                                 @error('gambar')
                                     <span class="text-danger" role="alert">
@@ -89,7 +89,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <textarea name="deskripsi" id="" class="form-control" cols="30" rows="6"></textarea>
+                                <textarea name="deskripsi" id="" class="form-control" cols="30" rows="6">{{ old('deskripsi') }}</textarea>
                                 @error('deskripsi')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>

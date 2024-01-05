@@ -15,7 +15,7 @@
                     </p>
                 </div>
                 <div class="box-body">
-                    <form action="{{ url('backend/lapangan/' . $lapangan->id) }}" method="POST">
+                    <form action="{{ url('backend/lapangan/' . $lapangan->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="col-md-6">
