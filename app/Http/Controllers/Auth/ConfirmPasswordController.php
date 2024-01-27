@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
+use Auth;
 
 class ConfirmPasswordController extends Controller
 {
@@ -26,7 +27,26 @@ class ConfirmPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo;
+
+    public function redirectTo()
+    {
+        switch (Auth::user()->roles) {
+            case 'admin':
+                $this->redirectTo = '/backend/dashboard';
+                return $this->redirectTo;
+                break;
+            case 'member':
+                $this->redirectTo = '/dashboard';
+                return $this->redirectTo;
+                break;
+            default:
+                $this->redirectTo = '/login';
+                return $this->redirectTo;
+        }
+
+        // return $next($request);
+    }
 
     /**
      * Create a new controller instance.
