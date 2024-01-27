@@ -21,7 +21,7 @@
     <ul class="nav navbar-nav">
         @if (Route::has('login'))
         @auth
-            <li><a href="/dashboard">Home</a></li>
+            <li><a href="/backend/dashboard">Home</a></li>
             @else
             <li><a href="/login">Login</a></li>
             @if (Route::has('register'))
