@@ -30,11 +30,11 @@
 
                 <!-- Main content -->
                 <section class="content">
-                    @foreach ($lapangan as $lp)
-                        <div class="row">
+                    <div class="row">
+                        @foreach ($lapangan as $lp)
                             <div class="col-sm-6 col-md-4">
                                 <div class="thumbnail">
-                                    <img src="{{ asset('storage/lapangans/'.$lp->gambar) }}" alt="...">
+                                    <img src="{{ asset('storage/lapangans/' . $lp->gambar) }}" alt="...">
                                     <div class="caption">
                                         <h3>{{ $lp->nama_lapangan }}</h3>
                                         <p>Malam : Rp. {{ number_format($lp->harga_sewa_malam) }}/Jam</p>
@@ -45,8 +45,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </section>
                 <!-- /.content -->
             </div>
