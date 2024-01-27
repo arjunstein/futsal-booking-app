@@ -42,3 +42,4 @@ Route::get('logout', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [LapanganController::class,'welcome_page'])->name('welcome');
