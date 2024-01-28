@@ -37,7 +37,11 @@
         <ul class="nav navbar-nav">
             @if (Route::has('login'))
                 @auth
-                    <li><a href="/backend/dashboard">Home</a></li>
+                    @if (\Auth::user()->roles === 'admin')
+                        <li><a href="/backend/dashboard">Home</a></li>
+                    @else
+                        <li><a href="/dashboard">Home</a></li>
+                    @endif
                 @else
                     <li><a href="/login">Login</a></li>
                     @if (Route::has('register'))
