@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Lapangan;
 
 class HomeController extends Controller
 {
@@ -24,5 +25,15 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function dashboard()
+    {
+        $data = [
+            'title' => 'Halaman dashboard',
+            'lapangan' => Lapangan::orderBy('id', 'asc')->get(),
+        ];
+
+        return view('/dashboard', $data);
     }
 }
