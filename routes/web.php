@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CategoryFieldController;
 use App\Http\Controllers\Backend\LapanganController;
+use App\Http\Controllers\NonAdminLapanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +24,16 @@ Route::get('/', function () {
 
 // Route Administrator
 Route::prefix('backend')->group(function () {
-    Route::middleware(['auth'])->group(function () {
+    Route::middleware(['auth','checkRole:admin'])->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard');
         Route::resource('/user', UserController::class);
         Route::resource('/category', CategoryFieldController::class);
         Route::resource('/lapangan', LapanganController::class);
     });
 });
+
+// Route non administrator
+Route::resource('/lapangan', NonAdminLapanganController::class);
 
 Route::post('logout', function () {
     \Auth::logout();
