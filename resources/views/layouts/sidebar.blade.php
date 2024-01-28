@@ -69,13 +69,13 @@
             {{-- Member Role --}}
             <li class="header">MEMBER</li>
             <li class="{{ Request::is('/lapangan/*') ? 'active' : '' }}"><a href="/lapangan"><i
-                        class="fa fa-circle-o"></i> Lapangan</a></li>
+                        class="fa fa-circle-o"></i> <span>Lapangan</span></a></li>
             <li class="{{ Request::is('/lapangan/*') ? 'active' : '' }}"><a href="/lapangan"><i
-                        class="fa fa-circle-o"></i> Futsal</a></li>
+                        class="fa fa-circle-o"></i> <span>Futsal</span></a></li>
             <li class="{{ Request::is('/lapangan/*') ? 'active' : '' }}"><a href="/lapangan"><i
-                        class="fa fa-circle-o"></i> Mini Soccer</a></li>
+                        class="fa fa-circle-o"></i> <span>Mini Soccer</span></a></li>
             <li class="{{ Request::is('/lapangan/*') ? 'active' : '' }}"><a href="/lapangan"><i
-                        class="fa fa-circle-o"></i> Events</a></li>
+                        class="fa fa-circle-o"></i> <span>Events</span></a></li>
         @endif
 
     </ul>
