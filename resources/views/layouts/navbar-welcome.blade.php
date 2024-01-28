@@ -39,8 +39,72 @@
                 @auth
                     @if (\Auth::user()->roles === 'admin')
                         <li><a href="/backend/dashboard">Home</a></li>
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="{{ asset('img/user.png') }}" class="user-image" alt="User Image">
+                                <span class="hidden-xs">{{ \Auth::user()->name }}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="{{ asset('img/user.png') }}" class="img-circle" alt="User Image">
+
+                                    <p>
+                                        {{ \Auth::user()->name }}
+                                        <small>{{ \Auth::user()->roles }}</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat menu-sidebar">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a onclick="event.preventDefault();document.getElementById('logout-form').submit()"
+                                            class="btn btn-default btn-flat menu-sidebar">Sign out</a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                     @else
                         <li><a href="/dashboard">Home</a></li>
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="{{ asset('img/user.png') }}" class="user-image" alt="User Image">
+                                <span class="hidden-xs">{{ \Auth::user()->name }}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="{{ asset('img/user.png') }}" class="img-circle" alt="User Image">
+
+                                    <p>
+                                        {{ \Auth::user()->name }}
+                                        <small>{{ \Auth::user()->roles }}</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat menu-sidebar">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a onclick="event.preventDefault();document.getElementById('logout-form').submit()"
+                                            class="btn btn-default btn-flat menu-sidebar">Sign out</a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                     @endif
                 @else
                     <li><a href="/login">Login</a></li>

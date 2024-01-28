@@ -51,7 +51,12 @@ class NonAdminLapanganController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = [
+            'lapangan' => Lapangan::findOrFail($id),
+            'title' => 'Detail lapangan',
+        ];
+
+        return view('pages.lapangan.detail', $data);
     }
 
     /**
