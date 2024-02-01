@@ -26,14 +26,6 @@ class LapanganController extends Controller
 
         return view('backend.lapangan.index', $data);
     }
-
-    public function welcome_page()
-    {
-        $lapangan = Lapangan::orderBy('id', 'asc')->get();
-
-        return view('welcome',compact('lapangan'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -156,8 +148,7 @@ class LapanganController extends Controller
             $data->update();
         }
 
-        return redirect()
-            ->route('lapangan.index')
+        return redirect('backend.lapangan.index')
             ->with('success', 'Lapangan berhasil diperbarui');
     }
 

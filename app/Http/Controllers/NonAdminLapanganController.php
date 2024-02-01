@@ -22,6 +22,33 @@ class NonAdminLapanganController extends Controller
         return view('pages.lapangan.index', $data);
     }
 
+    public function welcome_page()
+    {
+        $lapangan = Lapangan::orderBy('id', 'asc')->get();
+
+        return view('welcome', compact('lapangan'));
+    }
+
+    public function get_futsal()
+    {
+        $data = [
+            'title' => 'List Lapangan Futsal',
+            'lapangan' => Lapangan::where('nama_lapangan', 'like', '%futsal%')->get(),
+        ];
+
+        return view('pages.lapangan.futsal', $data);
+    }
+
+    public function get_mini_soccer()
+    {
+        $data = [
+            'title' => 'List Lapangan Futsal',
+            'lapangan' => Lapangan::where('nama_lapangan', 'like', '%mini%soccer%')->get(),
+        ];
+
+        return view('pages.lapangan.mini_soccer', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

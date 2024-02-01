@@ -24,7 +24,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Daftar semua lapangan yang bisa anda nikmati
+                        Daftar lapangan futsal yang bisa anda nikmati
                     </h1>
                 </section>
 

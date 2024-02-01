@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 // Route Administrator
 Route::prefix('backend')->group(function () {
-    Route::middleware(['auth','checkRole:admin'])->group(function () {
+    Route::middleware(['auth', 'checkRole:admin'])->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('dashboard');
         Route::resource('/user', UserController::class);
         Route::resource('/category', CategoryFieldController::class);
@@ -34,6 +34,9 @@ Route::prefix('backend')->group(function () {
 
 // Route non administrator
 Route::resource('/lapangan', NonAdminLapanganController::class);
+Route::get('/', [NonAdminLapanganController::class, 'welcome_page'])->name('welcome');
+Route::get('/futsal', [NonAdminLapanganController::class, 'get_futsal'])->name('get_futsal');
+Route::get('/mini_soccer', [NonAdminLapanganController::class, 'get_mini_soccer'])->name('get_mini_soccer');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 
@@ -46,5 +49,3 @@ Route::get('logout', function () {
 });
 
 Auth::routes();
-
-Route::get('/', [LapanganController::class,'welcome_page'])->name('welcome');
