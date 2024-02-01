@@ -13,8 +13,8 @@
                 @auth
                     @if (\Auth::user()->roles == 'admin')
                         <li><a href="/backend/lapangan">Lapangan</a></li>
-                        <li><a href="/backend/futsal">Futsal</a></li>
-                        <li><a href="/backend/mini_soccer">Mini Soccer</a></li>
+                        <li><a href="/futsal">Futsal</a></li>
+                        <li><a href="/mini_soccer">Mini Soccer</a></li>
                         <li><a href="/backend/events">Events</a></li>
                     @else
                         <li><a href="/lapangan">Lapangan</a></li>
