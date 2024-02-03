@@ -2,7 +2,7 @@
 <?php
 //$dt = \App\User::where('id',\Auth::user()->id)->first();
 ?>
-<a href="/dashboard" class="logo">
+<a href="/" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>F</b>A</span>
     <!-- logo for regular state and mobile devices -->

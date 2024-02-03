@@ -40,8 +40,19 @@
                                         <p>Malam : Rp. {{ number_format($lp->harga_sewa_malam) }}/Jam</p>
                                         <p>Siang : Rp. {{ number_format($lp->harga_sewa_siang) }}/Jam</p>
                                         <p>{{ $lp->deskripsi }}</p>
-                                        <p><a href="#" class="btn btn-primary" role="button">Booking</a> <a
-                                                href="{{ url('/lapangan/'.$lp->id) }}" class="btn btn-success" role="button">Lihat Detail</a></p>
+                                        <p><a href="#" class="btn btn-primary" role="button">Booking</a>
+                                            <a href="{{ url('/lapangan/' . $lp->id) }}" class="btn btn-success"
+                                                role="button">Lihat Detail</a>
+
+                                            @if (Route::has('login'))
+                                                @auth
+                                                    @if (\Auth::user()->roles == 'admin')
+                                                        <a href="{{ url('backend/lapangan/' . $lp->id.'/edit') }}" class="btn btn-warning"
+                                                            role="button">Edit Lapangan</a>
+                                                    @endif
+                                                @endauth
+                                            @endif
+                                        </p>
                                     </div>
                                 </div>
                             </div>

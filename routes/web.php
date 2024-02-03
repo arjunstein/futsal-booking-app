@@ -49,3 +49,7 @@ Route::get('logout', function () {
 });
 
 Auth::routes();
+
+Route::get('/permission_denied', function () {
+    return view('permission_denied');
+});
