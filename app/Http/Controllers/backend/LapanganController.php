@@ -66,7 +66,7 @@ class LapanganController extends Controller
         $data->save();
 
         return redirect()
-            ->route('lapangan.index')
+            ->route('backend/lapangan')
             ->with('success', 'Lapangan berhasil dibuat');
     }
 
@@ -148,7 +148,7 @@ class LapanganController extends Controller
             $data->update();
         }
 
-        return redirect('backend.lapangan.index')
+        return redirect('backend/lapangan')
             ->with('success', 'Lapangan berhasil diperbarui');
     }
 
