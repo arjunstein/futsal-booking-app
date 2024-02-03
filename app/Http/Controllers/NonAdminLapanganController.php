@@ -33,7 +33,7 @@ class NonAdminLapanganController extends Controller
     {
         $data = [
             'title' => 'List Lapangan Futsal',
-            'lapangan' => Lapangan::where('nama_lapangan', 'like', '%futsal%')->get(),
+            'lapangan' => Lapangan::getFutsalFields(),
         ];
 
         return view('pages.lapangan.futsal', $data);
@@ -43,7 +43,7 @@ class NonAdminLapanganController extends Controller
     {
         $data = [
             'title' => 'List Lapangan Futsal',
-            'lapangan' => Lapangan::where('nama_lapangan', 'like', '%mini%soccer%')->get(),
+            'lapangan' => Lapangan::getMiniSoccerFields(),
         ];
 
         return view('pages.lapangan.mini_soccer', $data);
