@@ -3,14 +3,9 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h3>Dahsboard</h3>
+            <h3>Dashboard</h3>
             <div class="box box-warning">
                 <div class="box-header">
-                    {{-- <p> --}}
-                    {{-- <button class="btn btn-sm btn-flat btn-warning btn-refresh"><i class="fa fa-refresh"></i> --}}
-                    {{-- Refresh</button> --}}
-                    {{-- <a href="/backend/user/create" class="btn btn-flat btn-sm btn-primary">Buat Member</a> --}}
-                    {{-- </p> --}}
                 </div>
                 <div class="box-body">
                     <div class="row">
