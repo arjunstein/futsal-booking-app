@@ -21,7 +21,7 @@ class Lapangan extends Model
         return self::orderBy('lapangans.id', 'asc')
             ->join('category_fields', 'lapangans.category_id', '=', 'category_fields.id')
             ->select('lapangans.*', 'category_fields.category_field_name')
-            ->where('category_fields.category_field_name', 'like', '%futsal%')->get();
+            ->where('category_fields.category_field_name', 'like', '%futsal%')->paginate(10);
     }
 
     public static function getMiniSoccerFields()
@@ -29,6 +29,6 @@ class Lapangan extends Model
         return self::orderBy('lapangans.id', 'asc')
             ->join('category_fields', 'lapangans.category_id', '=', 'category_fields.id')
             ->select('lapangans.*', 'category_fields.category_field_name')
-            ->where('category_fields.category_field_name', 'like', '%mini soccer%')->get();
+            ->where('category_fields.category_field_name', 'like', '%mini soccer%')->paginate(10);
     }
 }
