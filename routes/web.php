@@ -37,6 +37,7 @@ Route::resource('/lapangan', NonAdminLapanganController::class);
 Route::get('/', [NonAdminLapanganController::class, 'welcome_page'])->name('welcome');
 Route::get('/futsal', [NonAdminLapanganController::class, 'get_futsal'])->name('get_futsal');
 Route::get('/mini_soccer', [NonAdminLapanganController::class, 'get_mini_soccer'])->name('get_mini_soccer');
+Route::get('/events', [NonAdminLapanganController::class, 'events'])->name('events');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 
