@@ -54,6 +54,16 @@ class NonAdminLapanganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function events()
+    {
+        $data = [
+            'title' => 'Events di Futsal App',
+        ];
+
+        return view('pages.events', $data);
+    }
+
     public function create()
     {
         //
