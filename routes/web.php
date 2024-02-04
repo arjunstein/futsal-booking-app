@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CategoryFieldController;
 use App\Http\Controllers\Backend\LapanganController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\NonAdminLapanganController;
 
 /*
@@ -30,6 +31,10 @@ Route::prefix('backend')->group(function () {
         Route::resource('/category', CategoryFieldController::class);
         Route::resource('/lapangan', LapanganController::class);
     });
+});
+
+Route::middleware(['auth', 'checkRole:admin,member'])->group(function () {
+    Route::get('/lapangan/{id}/booking', [BookingController::class, 'booking_lapangan'])->name('booking_lapangan');
 });
 
 // Route non administrator

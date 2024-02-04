@@ -9,6 +9,13 @@
 <link rel="stylesheet" href="/adminlte/bower_components/font-awesome/css/font-awesome.min.css?v1">
 <!-- Ionicons -->
 <link rel="stylesheet" href="/adminlte/bower_components/Ionicons/css/ionicons.min.css?v1">
+<!-- Select2 -->
+<link rel="stylesheet" href="/adminlte/bower_components/select2/dist/css/select2.min.css">
+<!-- daterange picker -->
+<link rel="stylesheet" href="/adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+<!-- bootstrap datepicker -->
+<link rel="stylesheet" href="/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="/adminlte/plugins/timepicker/bootstrap-timepicker.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="/adminlte/dist/css/AdminLTE.min.css?v1">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
