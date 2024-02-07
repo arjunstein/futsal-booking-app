@@ -40,7 +40,7 @@
                                         <p>Malam : Rp. {{ number_format($lp->harga_sewa_malam) }}/Jam</p>
                                         <p>Siang : Rp. {{ number_format($lp->harga_sewa_siang) }}/Jam</p>
                                         <p>{{ $lp->deskripsi }}</p>
-                                        <p><a href="#" class="btn btn-primary" role="button">Booking</a> <a
+                                        <p><a href="{{ url('lapangan/'.$lp->id.'/booking') }}" class="btn btn-primary" role="button">Booking</a> <a
                                                 href="{{ url('/lapangan/'.$lp->id) }}" class="btn btn-success" role="button">Lihat Detail</a></p>
                                     </div>
                                 </div>

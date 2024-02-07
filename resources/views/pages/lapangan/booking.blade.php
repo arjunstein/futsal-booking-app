@@ -51,59 +51,48 @@
                                 <div class="box-body">
                                     <!-- Date -->
                                     <div class="form-group">
-                                        <label>Date:</label>
+                                        <label>Tanggal main:</label>
 
                                         <div class="input-group date">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="datepicker">
+                                            <input type="text" class="form-control pull-right"
+                                                data-provide="datepicker" data-date-start-date="0d" id="datepicker">
                                         </div>
                                         <!-- /.input group -->
                                     </div>
                                     <!-- /.form group -->
 
-                                    <!-- Date range -->
+                                    <!-- Timepicker -->
                                     <div class="form-group">
-                                        <label>Date range:</label>
+                                        <label>Jam main:</label>
 
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <input type="text" class="form-control pull-right" id="reservation">
-                                        </div>
-                                        <!-- /.input group -->
-                                    </div>
-                                    <!-- /.form group -->
-
-                                    <!-- Date and time range -->
-                                    <div class="form-group">
-                                        <label>Date and time range:</label>
-
-                                        <div class="input-group">
+                                        <div class="input-group date">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-clock-o"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="reservationtime">
+                                            <select class="form-control select2" multiple="multiple">
+                                                <option value="06:00 - 07:00">06:00 - 07:00</option>
+                                                <option value="07:00 - 08:00">07:00 - 08:00</option>
+                                                <option value="09:00 - 10:00">09:00 - 10:00</option>
+                                                <option value="10:00 - 11:00">10:00 - 11:00</option>
+                                                <option value="11:00 - 12:00">11:00 - 12:00</option>
+                                                <option value="12:00 - 13:00">12:00 - 13:00</option>
+                                                <option value="13:00 - 14:00">13:00 - 14:00</option>
+                                                <option value="14:00 - 15:00">14:00 - 15:00</option>
+                                                <option value="15:00 - 16:00">15:00 - 16:00</option>
+                                                <option value="16:00 - 17:00">16:00 - 17:00</option>
+                                                <option value="17:00 - 18:00">17:00 - 18:00</option>
+                                                <option value="18:00 - 19:00">18:00 - 19:00</option>
+                                                <option value="19:00 - 20:00">19:00 - 20:00</option>
+                                                <option value="20:00 - 21:00">20:00 - 21:00</option>
+                                                <option value="21:00 - 22:00">21:00 - 22:00</option>
+                                                <option value="22:00 - 23:00">22:00 - 23:00</option>
+                                                <option value="23:00 - 00:00">23:00 - 00:00</option>
+                                            </select>
                                         </div>
                                         <!-- /.input group -->
-                                    </div>
-                                    <!-- /.form group -->
-
-                                    <!-- Date and time range -->
-                                    <div class="form-group">
-                                        <label>Date range button:</label>
-
-                                        <div class="input-group">
-                                            <button type="button" class="btn btn-default pull-right"
-                                                id="daterange-btn">
-                                                <span>
-                                                    <i class="fa fa-calendar"></i> Date range picker
-                                                </span>
-                                                <i class="fa fa-caret-down"></i>
-                                            </button>
-                                        </div>
                                     </div>
                                     <!-- /.form group -->
 
