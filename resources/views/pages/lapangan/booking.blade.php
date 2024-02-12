@@ -58,7 +58,7 @@
                                                 <i class="fa fa-calendar"></i>
                                             </div>
                                             <input type="text" class="form-control pull-right"
-                                                data-provide="datepicker" data-date-start-date="0d" id="datepicker">
+                                                data-provide="datepicker" data-date-format="DD, dd-MM-yyyy" data-date-start-date="0d" id="datepicker">
                                         </div>
                                         <!-- /.input group -->
                                     </div>
