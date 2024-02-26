@@ -18,20 +18,20 @@
 
             <form action="{{ route('login') }}" method="post">
                 @csrf
+                @if ($errors->has('email'))
+                    <span class="help-block text-red">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
                 <div class="form-group has-feedback">
                     <input type="text" class="form-control" name="email" value="{{ old('email') }}"
                         placeholder="Email / Username">
-                    @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                    @endif
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
                     <input type="password" class="form-control" name="password" placeholder="Password">
                     @if ($errors->has('password'))
-                        <span class="help-block">
+                        <span class="help-block text-red">
                             <strong>{{ $errors->first('password') }}</strong>
                         </span>
                     @endif
@@ -41,7 +41,8 @@
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label>
-                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Ingat masuk
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Ingat
+                                masuk
                             </label>
                         </div>
                     </div>

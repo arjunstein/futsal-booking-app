@@ -16,6 +16,11 @@ class Lapangan extends Model
         return $this->belongsTo(CategoryField::class, 'category_id');
     }
 
+    public function sewa_lapangan()
+    {
+        return $this->hasOne(Sewa::class);
+    }
+
     public static function getFutsalFields()
     {
         return self::orderBy('lapangans.id', 'asc')

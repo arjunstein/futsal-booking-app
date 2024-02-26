@@ -43,65 +43,94 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="box box-primary">
-                                <div class="box-header">
-                                    <h3 class="box-title">Pilih Jadwal</h3>
-                                </div>
-                                <div class="box-body">
-                                    <!-- Date -->
-                                    <div class="form-group">
-                                        <label>Tanggal main:</label>
-
-                                        <div class="input-group date">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <input type="text" class="form-control pull-right"
-                                                data-provide="datepicker" data-date-format="DD, dd-MM-yyyy" data-date-start-date="0d" id="datepicker">
-                                        </div>
-                                        <!-- /.input group -->
+                        <form action="{{ url('/lapangan/'.$lapangan->id.'/submit_booking') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="col-md-6">
+                                <div class="box box-primary">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Pilih Jadwal</h3>
                                     </div>
-                                    <!-- /.form group -->
+                                    <div class="box-body">
+                                        <!-- Date -->
+                                        <div class="form-group">
+                                            <label>Tanggal main:</label>
 
-                                    <!-- Timepicker -->
-                                    <div class="form-group">
-                                        <label>Jam main:</label>
-
-                                        <div class="input-group date">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-clock-o"></i>
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" name="tanggal_main"
+                                                    class="form-control pull-right" data-provide="datepicker"
+                                                    data-date-format="DD, dd-MM-yyyy" data-date-start-date="0d"
+                                                    id="datepicker" autocomplete="off">
                                             </div>
-                                            <select class="form-control select2" multiple="multiple">
-                                                <option value="06:00 - 07:00">06:00 - 07:00</option>
-                                                <option value="07:00 - 08:00">07:00 - 08:00</option>
-                                                <option value="09:00 - 10:00">09:00 - 10:00</option>
-                                                <option value="10:00 - 11:00">10:00 - 11:00</option>
-                                                <option value="11:00 - 12:00">11:00 - 12:00</option>
-                                                <option value="12:00 - 13:00">12:00 - 13:00</option>
-                                                <option value="13:00 - 14:00">13:00 - 14:00</option>
-                                                <option value="14:00 - 15:00">14:00 - 15:00</option>
-                                                <option value="15:00 - 16:00">15:00 - 16:00</option>
-                                                <option value="16:00 - 17:00">16:00 - 17:00</option>
-                                                <option value="17:00 - 18:00">17:00 - 18:00</option>
-                                                <option value="18:00 - 19:00">18:00 - 19:00</option>
-                                                <option value="19:00 - 20:00">19:00 - 20:00</option>
-                                                <option value="20:00 - 21:00">20:00 - 21:00</option>
-                                                <option value="21:00 - 22:00">21:00 - 22:00</option>
-                                                <option value="22:00 - 23:00">22:00 - 23:00</option>
-                                                <option value="23:00 - 00:00">23:00 - 00:00</option>
+                                            <!-- /.input group -->
+                                            @error('tanggal_main')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <!-- /.form group -->
+
+                                        <!-- Timepicker -->
+                                        <div class="form-group">
+                                            <label>Jam main:</label>
+
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                                <select class="form-control select2" name="jam_main[]"
+                                                    multiple="multiple">
+                                                    <option value="06:00 - 07:00">06:00 - 07:00</option>
+                                                    <option value="07:00 - 08:00">07:00 - 08:00</option>
+                                                    <option value="09:00 - 10:00">09:00 - 10:00</option>
+                                                    <option value="10:00 - 11:00">10:00 - 11:00</option>
+                                                    <option value="11:00 - 12:00">11:00 - 12:00</option>
+                                                    <option value="12:00 - 13:00">12:00 - 13:00</option>
+                                                    <option value="13:00 - 14:00">13:00 - 14:00</option>
+                                                    <option value="14:00 - 15:00">14:00 - 15:00</option>
+                                                    <option value="15:00 - 16:00">15:00 - 16:00</option>
+                                                    <option value="16:00 - 17:00">16:00 - 17:00</option>
+                                                    <option value="17:00 - 18:00">17:00 - 18:00</option>
+                                                    <option value="18:00 - 19:00">18:00 - 19:00</option>
+                                                    <option value="19:00 - 20:00">19:00 - 20:00</option>
+                                                    <option value="20:00 - 21:00">20:00 - 21:00</option>
+                                                    <option value="21:00 - 22:00">21:00 - 22:00</option>
+                                                    <option value="22:00 - 23:00">22:00 - 23:00</option>
+                                                    <option value="23:00 - 00:00">23:00 - 00:00</option>
+                                                </select>
+                                            </div>
+                                            <!-- /.input group -->
+                                            @error('jam_main')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <!-- /.form group -->
+                                        <div class="form-group">
+                                            <label>Uang Muka</label>
+                                            <select name="uang_muka" class="form-control">
+                                                <option value="50000">Rp. {{ number_format(50000) }}</option>
+                                                <option value="100000">Rp. {{ number_format(100000) }}</option>
+                                                <option value="150000">Rp. {{ number_format(150000) }}</option>
                                             </select>
+                                            @error('uang_muka')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
-                                        <!-- /.input group -->
                                     </div>
-                                    <!-- /.form group -->
-
+                                    <!-- /.box-body -->
                                 </div>
-                                <!-- /.box-body -->
+                                <!-- /.box -->
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
-                            <!-- /.box -->
+                        </form>
 
-                        </div>
                     </div>
                 </section>
                 <!-- /.content -->

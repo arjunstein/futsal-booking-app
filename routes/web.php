@@ -35,6 +35,7 @@ Route::prefix('backend')->group(function () {
 
 Route::middleware(['auth', 'checkRole:admin,member'])->group(function () {
     Route::get('/lapangan/{id}/booking', [BookingController::class, 'booking_lapangan'])->name('booking_lapangan');
+    Route::post('/lapangan/{id}/submit_booking', [BookingController::class, 'submit_booking'])->name('submit_booking');
 });
 
 // Route non administrator
