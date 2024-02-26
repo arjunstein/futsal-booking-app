@@ -19,7 +19,7 @@
             <form action="{{ route('login') }}" method="post">
                 @csrf
                 @if ($errors->has('email'))
-                    <span class="help-block-errors">
+                    <span class="help-block text-red">
                         <strong>{{ $errors->first('email') }}</strong>
                     </span>
                 @endif
@@ -31,7 +31,7 @@
                 <div class="form-group has-feedback">
                     <input type="password" class="form-control" name="password" placeholder="Password">
                     @if ($errors->has('password'))
-                        <span class="help-block">
+                        <span class="help-block text-red">
                             <strong>{{ $errors->first('password') }}</strong>
                         </span>
                     @endif

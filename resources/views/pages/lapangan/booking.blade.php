@@ -113,9 +113,9 @@
                                         <div class="form-group">
                                             <label>Uang Muka</label>
                                             <select name="uang_muka" class="form-control">
-                                                <option value="">Rp. {{ number_format(50000) }}</option>
-                                                <option value="">Rp. {{ number_format(100000) }}</option>
-                                                <option value="">Rp. {{ number_format(150000) }}</option>
+                                                <option value="50000">Rp. {{ number_format(50000) }}</option>
+                                                <option value="100000">Rp. {{ number_format(100000) }}</option>
+                                                <option value="150000">Rp. {{ number_format(150000) }}</option>
                                             </select>
                                             @error('uang_muka')
                                                 <span class="text-danger" role="alert">

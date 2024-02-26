@@ -32,10 +32,18 @@ class BookingController extends Controller
         $data->jam_main = implode(" ", $request->jam_main);
         $data->uang_muka = $request->uang_muka;
         $data->durasi_main = count($request->jam_main);
-        $data->status = 'booked';
+        $data->status = 'Dibooking';
         $data->user_id = auth()->user()->id;
         $data->lapangan_id = $id;
         $data->save();
+
+        $data_lapangan  = Lapangan::where('id', $id)->first();
+        if ($data_lapangan) {
+            # code...
+            $data_lapangan->status = "Booked";
+            $data_lapangan->update();
+        }
+
 
         return redirect('dashboard')->with('success', 'Berhasil memesan lapangan');
     }
