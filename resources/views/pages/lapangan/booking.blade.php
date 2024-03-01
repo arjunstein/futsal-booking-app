@@ -43,7 +43,8 @@
                             </div>
                         </div>
 
-                        <form action="{{ url('/lapangan/'.$lapangan->id.'/submit_booking') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('/lapangan/' . $lapangan->id . '/submit_booking') }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-6">
                                 <div class="box box-primary">

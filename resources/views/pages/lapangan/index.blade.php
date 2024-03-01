@@ -39,11 +39,16 @@
                                         <h3>{{ $lp->nama_lapangan }}</h3>
                                         <p>Malam : Rp. {{ number_format($lp->harga_sewa_malam) }}/Jam</p>
                                         <p>Siang : Rp. {{ number_format($lp->harga_sewa_siang) }}/Jam</p>
+                                        <p>
+                                            <span
+                                                class="badge {{ $lp->status == 'Tersedia' ? 'bg-aqua' : ($lp->status == 'Sudah Dibooking' ? 'bg-red' : 'bg-green') }}">{{ $lp->status }}</span>
+                                        </p>
                                         <p>{{ $lp->deskripsi }}</p>
                                         <p>
-                                            <a href="{{ url('lapangan/'.$lp->id.'/booking') }}" class="btn btn-primary" role="button">Booking</a>
+                                            <a href="{{ url('lapangan/' . $lp->id . '/booking') }}"
+                                                class="btn btn-primary" role="button">Booking</a>
                                             <a href="{{ url('/lapangan/' . $lp->id) }}" class="btn btn-success"
-                                                role="button">Lihat Detail</a>
+                                                role="button">Lihat Jadwal</a>
                                         </p>
                                     </div>
                                 </div>

@@ -40,7 +40,7 @@ class BookingController extends Controller
         $data_lapangan  = Lapangan::where('id', $id)->first();
         if ($data_lapangan) {
             # code...
-            $data_lapangan->status = "Booked";
+            $data_lapangan->status = "Sudah Dibooking";
             $data_lapangan->update();
         }
 

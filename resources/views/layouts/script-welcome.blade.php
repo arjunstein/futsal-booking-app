@@ -26,7 +26,7 @@
  <script src="/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
  <script src="/adminlte/plugins/input-mask/jquery.inputmask.extensions.js"></script>
  <!-- iCheck 1.0.1 -->
-<script src="/adminlte/plugins/iCheck/icheck.min.js"></script>
+ <script src="/adminlte/plugins/iCheck/icheck.min.js"></script>
  <script>
      $(function() {
          //Initialize Select2 Elements
@@ -102,4 +102,17 @@
              showInputs: false
          })
      })
+ </script>
+ <script>
+     // Mendapatkan waktu saat ini
+     var currentTime = new Date();
+     var currentHour = currentTime.getHours();
+
+     // Menonaktifkan opsi jam yang sudah lewat
+     $('select[name="jam_main[]"] option').each(function() {
+         var optionHour = parseInt($(this).val().split(':')[0], 10);
+         if (optionHour < currentHour) {
+             $(this).prop('disabled', true);
+         }
+     });
  </script>

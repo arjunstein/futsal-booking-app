@@ -45,6 +45,8 @@
                                         <p>{{ $lp->deskripsi }}</p>
                                         <p><a href="{{ url('/lapangan/' . $lp->id . '/booking') }}"
                                                 class="btn btn-primary" role="button">Booking</a>
+                                            <a href="{{ url('/lapangan/' . $lp->id) }}" class="btn btn-success"
+                                                role="button">Lihat Jadwal</a>
                                             @if (Route::has('login'))
                                                 @auth
                                                     @if (\Auth::user()->roles == 'admin')
